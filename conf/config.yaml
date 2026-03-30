@@ -16,7 +16,7 @@ martin:
     DIFFERENCE_THRESHOLD: 1099
     CHECK_INTERVAL: 3
     SAVE_IMAGES: true
-    DEFAULT_API_KEY: 待补全
+    DEFAULT_API_KEY: "your-zhipu-api-key"
     DEFAULT_SYSTEM_PROMPT_FILE: "default_prompt_files/vlm/system_prompt.txt"
     DEFAULT_USER_PROMPT_FILE: "default_prompt_files/vlm/user_prompt.md"
     DEFAULT_MODEL: "glm-4.6v-flash"
@@ -29,7 +29,7 @@ martin:
   mind:
     MARTIN_IDENTITIES_TABLE: "default_prompt_files/llm/martin_identities_365.csv"
     YEAR: 2026
-    DEFAULT_API_KEY: 待补全
+    DEFAULT_API_KEY: "your-zhipu-api-key"
     DEFAULT_SYSTEM_PROMPT_TEMPLATE: "default_prompt_files/llm/system_prompt_template.md"
     DEFAULT_MODEL: "glm-4.7-flash"
   
@@ -46,5 +46,5 @@ martin:
   
   # 技能模块
   skills:
-    FIRECRAWL_API_KEY: 待补全
+    FIRECRAWL_API_KEY: "your-firecrawl-api-key"
     DB_URL: "sqlite:///martin_tasks.db"

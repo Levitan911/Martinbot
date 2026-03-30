@@ -1,0 +1,17 @@
+pyautogui
+opencv-python
+pynput
+zai-sdk
+sniffio
+pandas
+pyperclip
+art
+termcolor
+demjson3
+pywin32
+json-repair
+pyyaml
+pydantic
+firecrawl
+apscheduler
+sqlalchemy

@@ -1,0 +1,24 @@
+[project]
+name = "Martinbot"
+version = "1.0.0"
+description = "A vision-based wechat group chat assistant"
+requires-python = ">=3.11"
+dependencies = [
+    "apscheduler>=3.11.2",
+    "art>=6.5",
+    "demjson3>=3.0.6",
+    "firecrawl>=4.19.0",
+    "json-repair>=0.58.3",
+    "opencv-python>=4.13.0.92",
+    "pandas>=3.0.1",
+    "pyautogui>=0.9.54",
+    "pydantic>=2.12.5",
+    "pynput>=1.8.1",
+    "pyperclip>=1.11.0",
+    "pywin32>=311",
+    "pyyaml>=6.0.3",
+    "sniffio>=1.3.1",
+    "sqlalchemy>=2.0.48",
+    "termcolor>=3.3.0",
+    "zai-sdk>=0.2.2",
+]

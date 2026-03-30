@@ -296,9 +296,8 @@ class MartinScheduler:
         logger.error(f"⚠️ 任务执行出错: {event.job_id}, 异常: {event.exception}")
 
 
-martin_scheduler = MartinScheduler()
-
 if __name__ == "__main__":
+    martin_scheduler = MartinScheduler()
 
 
     async def mock_callback(uid, msg):

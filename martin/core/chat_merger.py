@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import logging
+from pathlib import Path
 from conf.settings import config
 from martin.core.chat_parser import load_json, parse_chat_data
 from martin.claw.send_message import send_message
@@ -22,6 +23,7 @@ def load_existing_chat_data(data_file=DEFAULT_CHAT_DATA_FILE):
         DataFrame 对象，如果文件不存在返回空 DataFrame
     """
     if not os.path.exists(data_file):
+        Path(data_file).parent.mkdir(parents=True, exist_ok=True)
         logger.info(f"数据文件不存在，将创建新文件: {data_file}")
         return pd.DataFrame()
     

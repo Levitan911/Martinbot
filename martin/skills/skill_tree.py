@@ -324,12 +324,18 @@ async def grand_martin_auto(user_id: str, user_input: str, model: str = "glm-4.7
                 
                 # 循环继续：带着工具结果再次请求，生成最终回复
                 if attempt_times == max_attempts:
-                    attempt_times -= 1
+                    attempt_times -= 2
                     choice_strategy = None
             
             else:
                 # 没有工具调用，说明模型已经生成了最终回复            
                 final_reply = infer_result.content
+
+                # 模型照抄 chat_history 时，强制重新回答
+                if ("<text消息>" in final_reply or "<image消息>" in final_reply) and attempt_times < max_attempts:
+                    logger.info("模型照抄 chat_history，强制重新回答")
+                    continue
+
                 return final_reply
         except Exception as e:
             return None

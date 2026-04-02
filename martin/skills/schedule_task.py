@@ -156,7 +156,8 @@ class MartinScheduler:
                     id=job_id,
                     name=f"{user_id}|{content}",  # 将内容存入 name 字段，方便模糊搜索
                     replace_existing=True,        # 如果ID冲突则覆盖
-                    misfire_grace_time=None       # 错过执行时间不立即执行，视业务需求可调整
+                    misfire_grace_time=None,      # 错过执行时间不立即执行，视业务需求可调整
+                    max_instances=1               # 最大实例数 1，同一任务排队
                 )
                 
                 logger.info(f"✅ 任务已设定: [{job_id}] 于 {run_time} 执行")
@@ -188,6 +189,7 @@ class MartinScheduler:
                     name=f"{user_id}|{content}",
                     replace_existing=True,
                     misfire_grace_time=None,
+                    max_instances=1,
                     **cron_params
                 )
 

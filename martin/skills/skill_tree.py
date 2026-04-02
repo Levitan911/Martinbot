@@ -330,6 +330,15 @@ async def grand_martin_auto(user_id: str, user_input: str, model: str = "glm-4.7
             else:
                 # 没有工具调用，说明模型已经生成了最终回复            
                 final_reply = infer_result.content
+                
+                # 调试日志
+                logger.debug(f"attempt_times={attempt_times}, max_attempts={max_attempts}")
+                if final_reply:
+                    has_text = "<text消息>" in final_reply
+                    has_image = "<image消息>" in final_reply
+                    logger.debug(f"'<text消息>' in final_reply: {has_text}")
+                    logger.debug(f"'<image消息>' in final_reply: {has_image}")
+                    logger.debug(f"final_reply[:100]: {final_reply[:100]}")
 
                 # 模型照抄 chat_history 时，强制重新回答
                 if ("<text消息>" in final_reply or "<image消息>" in final_reply) and attempt_times < max_attempts:

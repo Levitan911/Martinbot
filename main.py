@@ -99,6 +99,8 @@ def process_batch_sync():
                         prefix = "@" + sender_name + " "
                         if prefix not in final_reply:
                             msg = prefix + final_reply
+                        else:
+                            msg = final_reply
                         msg = msg.replace(KEYWORD, "")  # 增加容错
                         logger.info(f"\n{KEYWORD[1:]}回复: {msg}")
 

@@ -1,4 +1,5 @@
 import os
+import re
 import pandas as pd
 import logging
 from pathlib import Path
@@ -66,9 +67,10 @@ def merge_chat_data(existing_df, new_json_str, data_file=DEFAULT_CHAT_DATA_FILE)
             else:
                 # 移除重复消息
                 # 创建布尔掩码：找出 new_df 中需要删除的行
-                f = lambda x: x.strip()[:-1].replace("? ", "").replace("？", "")[-8:] if isinstance(x, str) else x
-                mask_text = new_df['text_content'].map(f).isin(existing_df['text_content'].map(f))
-                mask_raw = new_df['raw_description'].isin(existing_df['raw_description'])
+                f = lambda x: re.sub(r'[\s!?！？]', '', x)[-8:] if isinstance(x, str) else x
+                repetition_check_area = int(1.5 * (martin.core.sliding_window_size + 1))
+                mask_text = new_df['text_content'].map(f).isin(existing_df['text_content'].tail(repetition_check_area).map(f))
+                mask_raw = new_df['raw_description'].map(f).isin(existing_df['raw_description'].tail(repetition_check_area).map(f))
 
                 # 合并条件：只要有一个字段重复就算重复 (逻辑或)
                 mask_to_drop = mask_text | mask_raw

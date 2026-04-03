@@ -37,7 +37,7 @@ def load_existing_chat_data(data_file=DEFAULT_CHAT_DATA_FILE):
         return pd.DataFrame()
 
 
-def merge_chat_data(existing_df, new_json_str, data_file=DEFAULT_CHAT_DATA_FILE):
+def merge_chat_data(existing_df, new_json_str, data_file=DEFAULT_CHAT_DATA_FILE, repetition_check_area=config.core.repetition_check_area):
     """
     将新的聊天记录合并到现有数据中
     
@@ -45,6 +45,7 @@ def merge_chat_data(existing_df, new_json_str, data_file=DEFAULT_CHAT_DATA_FILE)
         existing_df: 现有的 DataFrame
         new_json_str: 新的聊天记录 JSON 字符串
         data_file: 数据文件路径
+        repetition_check_area: 重复检查区域，默认 9
     
     Returns:
         merged_df: 合并后的 DataFrame
@@ -68,7 +69,6 @@ def merge_chat_data(existing_df, new_json_str, data_file=DEFAULT_CHAT_DATA_FILE)
                 # 移除重复消息
                 # 创建布尔掩码：找出 new_df 中需要删除的行
                 f = lambda x: re.sub(r'[\s!?！？]', '', x)[-8:] if isinstance(x, str) else x
-                repetition_check_area = int(1.5 * (martin.core.sliding_window_size + 1))
                 mask_text = new_df['text_content'].map(f).isin(existing_df['text_content'].tail(repetition_check_area).map(f))
                 mask_raw = new_df['raw_description'].map(f).isin(existing_df['raw_description'].tail(repetition_check_area).map(f))
 

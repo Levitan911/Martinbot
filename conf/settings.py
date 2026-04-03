@@ -30,6 +30,7 @@ class VisionConfig(BaseModel):
 
 class CoreConfig(BaseModel):
     sliding_window_size: int
+    repetition_check_area: int
 
 
 class MindConfig(BaseModel):

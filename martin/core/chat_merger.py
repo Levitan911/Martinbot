@@ -37,7 +37,7 @@ def load_existing_chat_data(data_file=DEFAULT_CHAT_DATA_FILE):
         return pd.DataFrame()
 
 
-def merge_chat_data(existing_df, new_json_str, data_file=DEFAULT_CHAT_DATA_FILE, repetition_check_area=config.core.repetition_check_area):
+def merge_chat_data(existing_df, new_json_str, data_file=DEFAULT_CHAT_DATA_FILE, repetition_check_area=config.martin.core.repetition_check_area):
     """
     将新的聊天记录合并到现有数据中
     

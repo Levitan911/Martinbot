@@ -24,7 +24,7 @@ martin:
   # 核心模块
   core:
     sliding_window_size: 15
-    repetition_check_area: 9
+    repetition_check_area: 15
   
   # 认知模块
   mind:

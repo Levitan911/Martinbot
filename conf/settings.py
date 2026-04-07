@@ -1,6 +1,7 @@
 import sys
 import yaml
 import logging
+from typing import Optional
 from pydantic import BaseModel
 from martin.equipments.load_config import load_config
 
@@ -14,7 +15,7 @@ class GeneralConfig(BaseModel):
     DEFAULT_CHAT_DATA_FILE: str
     KEYWORD: str
     USER_PROMPT_TEMPLATE: str
-    LLM: str
+    LLM: Optional[str] = None
     STICKERS_DIR: str
 
 
